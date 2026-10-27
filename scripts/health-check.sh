@@ -26,7 +26,7 @@ while [ "$ATTEMPT" -le "$MAX_RETRIES" ]; do
     echo "-> HTTP Response Status Code: $HTTP_CODE"
 
     if [ "$HTTP_CODE" -eq 200 ]; then
-        if grep -qi "DevOps" /tmp/health_response.html; then
+        if grep -qiE "(DevOps|EduPulse|Student)" /tmp/health_response.html; then
             echo "✔ Content validation passed: Application signature verified."
             SUCCESS=1
             break

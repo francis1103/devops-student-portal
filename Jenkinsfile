@@ -4,7 +4,7 @@ pipeline {
     environment {
         AZURE_VM_HOST        = '20.219.161.235'
         AZURE_VM_USER        = 'azureuser'
-        TARGET_DEPLOY_DIR    = '/var/www/devops-ia3'
+        TARGET_DEPLOY_DIR    = '/var/www/student-portal'
         TARGET_SSH_PORT      = '22'
         CREDENTIALS_ID       = 'azure-vm-ssh-key'
     }
@@ -38,9 +38,9 @@ pipeline {
                 sh '''
                     echo "Checking assets and markup validity..."
                     test -s index.html || { echo "index.html is empty or missing"; exit 1; }
-                    test -s css/style.css || { echo "style.css is empty or missing"; exit 1; }
-                    test -s js/script.js || { echo "script.js is empty or missing"; exit 1; }
-                    grep -q "DevOps" index.html || { echo "Missing project signature"; exit 1; }
+                    { test -s style.css || test -s css/style.css; } || { echo "style.css is missing"; exit 1; }
+                    { test -s script.js || test -s js/script.js; } || { echo "script.js is missing"; exit 1; }
+                    grep -qE "(DevOps|EduPulse|Student)" index.html || { echo "Missing project signature"; exit 1; }
                     echo "✔ All static application tests passed."
                 '''
             }
@@ -72,7 +72,7 @@ pipeline {
                 echo '=== Stage 5: Preparing Deployment Bundle ==='
                 sh '''
                     mkdir -p build_output
-                    tar -czf build_output/devops-ia3-release.tar.gz index.html css/ js/
+                    tar -czf build_output/devops-ia3-release.tar.gz index.html style.css script.js css/ js/ 2>/dev/null || tar -czf build_output/devops-ia3-release.tar.gz index.html style.css script.js
                     ls -lh build_output/devops-ia3-release.tar.gz
                     echo "✔ Release package created successfully."
                 '''

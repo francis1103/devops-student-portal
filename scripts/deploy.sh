@@ -8,11 +8,11 @@ set -euo pipefail
 # Configuration with safe defaults
 TARGET_HOST="${AZURE_VM_HOST:-20.219.161.235}"
 TARGET_USER="${AZURE_VM_USER:-azureuser}"
-DEPLOY_DIR="${TARGET_DEPLOY_DIR:-/var/www/devops-ia3}"
+DEPLOY_DIR="${TARGET_DEPLOY_DIR:-/var/www/student-portal}"
 SSH_PORT="${TARGET_SSH_PORT:-22}"
 
 # Optional SSH Key Parameter or identity file
-SSH_OPTS=(-p "$SSH_PORT" -o StrictHostKeyChecking=accept-new -o BatchMode=yes -o ConnectTimeout=10)
+SSH_OPTS=(-o "Port=$SSH_PORT" -o StrictHostKeyChecking=accept-new -o BatchMode=yes -o ConnectTimeout=10)
 if [ -n "${SSH_KEY_FILE:-}" ] && [ -f "${SSH_KEY_FILE}" ]; then
     SSH_OPTS+=(-i "$SSH_KEY_FILE")
 fi
@@ -46,7 +46,7 @@ else
 fi
 
 # Create target deployment directory
-sudo mkdir -p /var/www/devops-ia3
+sudo mkdir -p /var/www/student-portal
 sudo mkdir -p /tmp/devops-ia3-staging
 sudo chown -R $USER:$USER /tmp/devops-ia3-staging
 EOF
@@ -54,7 +54,7 @@ EOF
 # 3. Package and Transfer Website Files
 echo "[3/6] Packaging and transferring application assets..."
 TEMP_ARCHIVE="/tmp/devops-ia3-release-$(date +%s).tar.gz"
-tar -czf "$TEMP_ARCHIVE" index.html css/ js/
+tar -czf "$TEMP_ARCHIVE" index.html style.css script.js css/ js/ 2>/dev/null || tar -czf "$TEMP_ARCHIVE" index.html style.css script.js
 
 scp "${SSH_OPTS[@]}" "$TEMP_ARCHIVE" "$TARGET_USER@$TARGET_HOST:/tmp/devops-ia3-staging/release.tar.gz"
 rm -f "$TEMP_ARCHIVE"
@@ -75,22 +75,22 @@ EOF
 
 # 5. Configure Nginx Virtual Host and Reload
 echo "[5/6] Validating and configuring Nginx virtual host..."
-ssh "${SSH_OPTS[@]}" "$TARGET_USER@$TARGET_HOST" bash -s << 'EOF'
+ssh "${SSH_OPTS[@]}" "$TARGET_USER@$TARGET_HOST" bash -s << EOF
 set -euo pipefail
-NGINX_CONF="/etc/nginx/sites-available/devops-ia3"
+NGINX_CONF="/etc/nginx/sites-available/student-portal"
 
-cat << 'CONF' | sudo tee "$NGINX_CONF" > /dev/null
+cat << 'CONF' | sudo tee "\$NGINX_CONF" > /dev/null
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
-    root /var/www/devops-ia3;
+    root $DEPLOY_DIR;
     index index.html;
 
     server_name _;
 
     location / {
-        try_files $uri $uri/ /index.html;
+        try_files \$uri \$uri/ /index.html;
     }
 
     # Cache static assets
@@ -107,7 +107,7 @@ server {
 CONF
 
 # Enable site and disable default if needed
-sudo ln -sf "$NGINX_CONF" /etc/nginx/sites-enabled/devops-ia3
+sudo ln -sf "\$NGINX_CONF" /etc/nginx/sites-enabled/student-portal
 sudo rm -f /etc/nginx/sites-enabled/default
 
 # Test syntax and reload
