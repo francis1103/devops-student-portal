@@ -3,49 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DevOps IA-3: Automated Deployment of a Web Application Using CI/CD, Terraform, Azure, GitHub, Docker, and Jenkins">
-    <meta name="author" content="Francis - DevOps IA-3">
-    <title>DevOps Pipeline & Cloud Deployment Dashboard | DevOps IA-3</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="EduPulse - College Student Portal Dashboard. Manage your courses, assignments, attendance, and campus announcements.">
+    <title>EduPulse | Student Portal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-theme">
-    <!-- Background Gradient Glows -->
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-    <div class="bg-glow bg-glow-3"></div>
+<body>
+    <!-- Top Navigation Header -->
+    <header class="portal-header">
+        <div class="header-container">
+            <div class="brand">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <span class="portal-title">EduPulse</span>
+                    <span class="portal-subtitle">Student Dashboard</span>
+                </div>
+            </div>
 
-    <!-- Navigation Header -->
-    <header class="header" id="header">
-        <div class="nav-container">
-            <a href="#hero" class="brand-logo" id="brand-logo">
-                <span class="logo-icon">⚡</span>
-                <span class="logo-text">DevOps<span class="highlight">IA-3</span></span>
-            </a>
-
+            <!-- Desktop Navigation -->
             <nav class="nav-menu" id="nav-menu">
-                <ul class="nav-list">
-                    <li><a href="#overview" class="nav-link" id="nav-link-overview">Overview</a></li>
-                    <li><a href="#pipeline" class="nav-link" id="nav-link-pipeline">Pipeline</a></li>
-                    <li><a href="#status" class="nav-link" id="nav-link-status">Live Status</a></li>
-                    <li><a href="#architecture" class="nav-link" id="nav-link-architecture">Architecture</a></li>
-                    <li><a href="#stack" class="nav-link" id="nav-link-stack">Tech Stack</a></li>
-                    <li><a href="#workflow" class="nav-link" id="nav-link-workflow">Workflow</a></li>
-                </ul>
+                <a href="#dashboard" class="nav-link active">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    Dashboard
+                </a>
+                <a href="#courses" class="nav-link">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    My Courses
+                </a>
+                <a href="#assignments" class="nav-link">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    Assignments
+                </a>
+                <a href="#schedule" class="nav-link">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Schedule
+                </a>
+                <a href="#announcements" class="nav-link">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    Announcements
+                </a>
             </nav>
 
-            <div class="nav-actions">
-                <a href="https://github.com/francis1103/DevOps-IA3.git" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="btn-github-nav">
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                    </svg>
-                    <span>GitHub Repo</span>
-                </a>
-                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+            <!-- User Mini Profile & Mobile Toggle -->
+            <div class="header-actions">
+                <div class="user-pill" title="Current Active Student">
+                    <div class="user-avatar-small">AM</div>
+                    <div class="user-info-text">
+                        <span class="user-name">Alex Morgan</span>
+                        <span class="user-role">Student</span>
+                    </div>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button class="hamburger-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -54,565 +68,432 @@
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-section" id="hero">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <div class="badge-pill">
-                        <span class="badge-dot"></span>
-                        <span>Academic DevOps IA-3 Project</span>
-                    </div>
-                    <h1 class="hero-title">
-                        Automated Cloud Deployment with <span class="gradient-text">CI/CD & Infrastructure as Code</span>
-                    </h1>
-                    <p class="hero-subtitle">
-                        An end-to-end automated deployment pipeline integrating GitHub, Dockerized Jenkins, Terraform, and Microsoft Azure to deliver modern web applications with zero manual server intervention.
-                    </p>
-                    <div class="hero-cta-group">
-                        <a href="#pipeline" class="btn btn-primary" id="btn-explore-pipeline">
-                            <span>Inspect Pipeline</span>
-                            <span class="arrow">→</span>
-                        </a>
-                        <a href="#status" class="btn btn-secondary" id="btn-view-status">
-                            <span>Check Live Status</span>
-                        </a>
-                    </div>
-                    <div class="hero-metrics">
-                        <div class="metric-card">
-                            <span class="metric-number">100%</span>
-                            <span class="metric-label">Automated Deploy</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-number">IaC</span>
-                            <span class="metric-label">Terraform Managed</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-number">Azure</span>
-                            <span class="metric-label">Ubuntu 22.04 LTS</span>
-                        </div>
-                    </div>
+    <!-- Main Container -->
+    <main class="main-wrapper" id="dashboard">
+        <!-- Welcome Banner Section -->
+        <section class="welcome-card">
+            <div class="welcome-content">
+                <div class="welcome-badge">Academic Year 2024–2025</div>
+                <h1 class="welcome-title">Welcome Back, Alex Morgan!</h1>
+                <p class="welcome-subtitle">
+                    Here is what is happening with your courses and exams today. You have <strong id="welcome-pending-highlight">3 pending assignments</strong> to review this week.
+                </p>
+                <div class="welcome-actions">
+                    <button class="btn btn-primary" id="btn-welcome-greeting">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        <span>Say Hello & Get Motivated</span>
+                    </button>
+                    <span class="quick-status-chip">
+                        <span class="status-dot"></span> Semester 5 &bull; In Good Standing
+                    </span>
                 </div>
-
-                <div class="hero-visual">
-                    <div class="terminal-card" id="terminal-card">
-                        <div class="terminal-header">
-                            <div class="terminal-dots">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <span class="terminal-title">jenkins-pipeline-runner.sh</span>
-                            <span class="terminal-badge">LIVE MONITOR</span>
-                        </div>
-                        <div class="terminal-body">
-                            <p class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">git push origin main</span></p>
-                            <p class="term-line term-dim">> Webhook triggered -> devops-jenkins</p>
-                            <p class="term-line"><span class="term-cyan">[INFO]</span> Checking out commit <span class="term-hash">#a3f892b</span></p>
-                            <p class="term-line"><span class="term-cyan">[INFO]</span> Validating HTML5, CSS3, & ES6 syntax... <span class="term-green">PASSED</span></p>
-                            <p class="term-line"><span class="term-cyan">[INFO]</span> Terraform syntax & validation check... <span class="term-green">VALID</span></p>
-                            <p class="term-line"><span class="term-cyan">[INFO]</span> Connecting to Azure VM (20.219.161.235)... <span class="term-green">CONNECTED</span></p>
-                            <p class="term-line"><span class="term-cyan">[INFO]</span> Synchronizing files to /var/www/devops-ia3... <span class="term-green">SYNCED</span></p>
-                            <p class="term-line"><span class="term-cyan">[INFO]</span> Reloading Nginx service... <span class="term-green">ACTIVE (RUNNING)</span></p>
-                            <p class="term-line term-success"><span class="term-bold">✔ DEPLOYMENT SUCCESSFUL</span> (Execution Time: 18.4s)</p>
-                        </div>
-                    </div>
+                <!-- Dynamic greeting output area -->
+                <div class="greeting-box" id="greeting-display" style="display: none;">
+                    <div class="greeting-icon">💬</div>
+                    <div class="greeting-text" id="greeting-text"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Project Overview Section -->
-        <section class="section overview-section" id="overview">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-tag">Project Overview</span>
-                    <h2 class="section-title">Bridging Development and Cloud Operations</h2>
-                    <p class="section-description">
-                        DevOps IA-3 solves the challenge of manual, error-prone server deployments by enforcing an automated continuous integration and continuous deployment (CI/CD) lifecycle powered by version control and declarative cloud infrastructure.
-                    </p>
+        <!-- Summary Metric Cards -->
+        <section class="metrics-grid">
+            <!-- Metric 1: Attendance -->
+            <div class="metric-card">
+                <div class="metric-icon-wrap bg-blue">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                 </div>
-
-                <div class="cards-grid three-col">
-                    <div class="feature-card">
-                        <div class="card-icon blue-glow">⚙️</div>
-                        <h3 class="card-title">Continuous Integration</h3>
-                        <p class="card-text">
-                            Every code commit pushed to GitHub triggers automated checkout, syntax validation, and unit checks within a sandboxed Dockerized Jenkins environment.
-                        </p>
-                        <ul class="feature-list">
-                            <li>Automated Git change detection</li>
-                            <li>Linting and code structure tests</li>
-                            <li>Immediate build feedback</li>
-                        </ul>
+                <div class="metric-details">
+                    <span class="metric-label">Overall Attendance</span>
+                    <div class="metric-value-row">
+                        <span class="metric-number">88.5%</span>
+                        <span class="metric-pill pill-success">Good</span>
                     </div>
+                    <span class="metric-caption">Minimum required: 75%</span>
+                </div>
+            </div>
 
-                    <div class="feature-card purple-glow">
-                        <div class="card-icon">🏗️</div>
-                        <h3 class="card-title">Infrastructure as Code</h3>
-                        <p class="card-text">
-                            Cloud infrastructure is codified and versioned with HashiCorp Terraform, eliminating configuration drift and ensuring identical, reproducible Azure environments.
-                        </p>
-                        <ul class="feature-list">
-                            <li>Declarative AzureRM definitions</li>
-                            <li>Managed VNet, Subnet, NSG, & VM</li>
-                            <li>Strict principle of least privilege</li>
-                        </ul>
+            <!-- Metric 2: Assignments Pending -->
+            <div class="metric-card">
+                <div class="metric-icon-wrap bg-amber">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="metric-details">
+                    <span class="metric-label">Assignments Pending</span>
+                    <div class="metric-value-row">
+                        <span class="metric-number" id="stat-assignments-pending">3</span>
+                        <span class="metric-pill pill-warning" id="stat-assignments-status">Action Needed</span>
                     </div>
+                    <span class="metric-caption" id="stat-assignments-caption">3 due before next Monday</span>
+                </div>
+            </div>
 
-                    <div class="feature-card emerald-glow">
-                        <div class="card-icon">🚀</div>
-                        <h3 class="card-title">Automated Deployment</h3>
-                        <p class="card-text">
-                            Pre-validated packages are securely transferred to the Azure Ubuntu host via SSH key authentication, followed by zero-downtime Nginx reloads and HTTP health probes.
-                        </p>
-                        <ul class="feature-list">
-                            <li>SSH key-based authentication</li>
-                            <li>Idempotent deployment scripts</li>
-                            <li>Automated post-deployment verification</li>
-                        </ul>
+            <!-- Metric 3: Upcoming Exams -->
+            <div class="metric-card">
+                <div class="metric-icon-wrap bg-indigo">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <div class="metric-details">
+                    <span class="metric-label">Upcoming Exams</span>
+                    <div class="metric-value-row">
+                        <span class="metric-number">2</span>
+                        <span class="metric-pill pill-indigo">Mid-Term</span>
                     </div>
+                    <span class="metric-caption">First exam on Nov 05</span>
+                </div>
+            </div>
+
+            <!-- Metric 4: Academic Standing -->
+            <div class="metric-card">
+                <div class="metric-icon-wrap bg-emerald">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <div class="metric-details">
+                    <span class="metric-label">Cumulative GPA</span>
+                    <div class="metric-value-row">
+                        <span class="metric-number">3.82</span>
+                        <span class="metric-pill pill-success">Dean's List</span>
+                    </div>
+                    <span class="metric-caption">Earned: 84 / 120 Credits</span>
                 </div>
             </div>
         </section>
 
-        <!-- Interactive Deployment Pipeline Section -->
-        <section class="section pipeline-section" id="pipeline">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-tag">End-to-End Pipeline</span>
-                    <h2 class="section-title">The Continuous Delivery Pipeline</h2>
-                    <p class="section-description">
-                        Trace the end-to-end journey of every line of code from local commit to the live production web server. Click any stage to inspect execution details.
-                    </p>
-                </div>
-
-                <div class="pipeline-track" id="pipeline-track">
-                    <div class="pipeline-step active" data-step="1" id="step-1">
-                        <div class="step-badge">1</div>
-                        <div class="step-icon">💻</div>
-                        <div class="step-label">Source Code</div>
-                        <div class="step-sub">Local Windows 11</div>
-                    </div>
-                    <div class="pipeline-connector"></div>
-
-                    <div class="pipeline-step" data-step="2" id="step-2">
-                        <div class="step-badge">2</div>
-                        <div class="step-icon">🐙</div>
-                        <div class="step-label">GitHub</div>
-                        <div class="step-sub">Version Control</div>
-                    </div>
-                    <div class="pipeline-connector"></div>
-
-                    <div class="pipeline-step" data-step="3" id="step-3">
-                        <div class="step-badge">3</div>
-                        <div class="step-icon">👨‍✈️</div>
-                        <div class="step-label">Jenkins</div>
-                        <div class="step-sub">Docker CI Engine</div>
-                    </div>
-                    <div class="pipeline-connector"></div>
-
-                    <div class="pipeline-step" data-step="4" id="step-4">
-                        <div class="step-badge">4</div>
-                        <div class="step-icon">🌍</div>
-                        <div class="step-label">Terraform</div>
-                        <div class="step-sub">Infrastructure Validation</div>
-                    </div>
-                    <div class="pipeline-connector"></div>
-
-                    <div class="pipeline-step" data-step="5" id="step-5">
-                        <div class="step-badge">5</div>
-                        <div class="step-icon">☁️</div>
-                        <div class="step-label">Microsoft Azure</div>
-                        <div class="step-sub">Cloud Environment</div>
-                    </div>
-                    <div class="pipeline-connector"></div>
-
-                    <div class="pipeline-step" data-step="6" id="step-6">
-                        <div class="step-badge">6</div>
-                        <div class="step-icon">🐧</div>
-                        <div class="step-label">Ubuntu VM</div>
-                        <div class="step-sub">Target Host (SSH)</div>
-                    </div>
-                    <div class="pipeline-connector"></div>
-
-                    <div class="pipeline-step" data-step="7" id="step-7">
-                        <div class="step-badge">7</div>
-                        <div class="step-icon">🌐</div>
-                        <div class="step-label">Web Application</div>
-                        <div class="step-sub">Nginx HTTP Port 80</div>
-                    </div>
-                </div>
-
-                <!-- Pipeline Stage Detail Card -->
-                <div class="stage-inspector-card" id="stage-inspector">
-                    <div class="inspector-header">
-                        <div class="inspector-title-group">
-                            <span class="inspector-tag" id="inspector-tag">STAGE 1 / 7</span>
-                            <h3 class="inspector-title" id="inspector-title">Local Source Code Development</h3>
-                        </div>
-                        <span class="status-pill status-success" id="inspector-status">READY</span>
-                    </div>
-                    <div class="inspector-body">
-                        <p class="inspector-desc" id="inspector-desc">
-                            The developer creates clean, semantic HTML5 structure, modular CSS3 styles, and vanilla JavaScript logic. Changes are staged and reviewed locally before pushing to the central repository.
-                        </p>
-                        <div class="inspector-meta-grid">
-                            <div class="meta-item">
-                                <span class="meta-label">Primary Tool:</span>
-                                <span class="meta-value" id="inspector-tool">Git 2.50.1 / VS Code / Antigravity</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">Execution Environment:</span>
-                                <span class="meta-value" id="inspector-env">Windows 11 Workstation</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">Output Artifact:</span>
-                                <span class="meta-value" id="inspector-artifact">Clean Git Commit</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Deployment Status Section -->
-        <section class="section status-section" id="status">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-tag">Live Telemetry</span>
-                    <h2 class="section-title">Deployment Status & Health Monitor</h2>
-                    <p class="section-description">
-                        Real-time status indicators tracking pipeline health, deployment state, and VM service availability.
-                    </p>
-                </div>
-
-                <div class="status-dashboard-grid">
-                    <div class="status-overview-card">
-                        <div class="status-card-header">
-                            <div>
-                                <h3 class="card-title">Production Status</h3>
-                                <p class="card-subtitle">Azure Host: <span class="mono">20.219.161.235</span></p>
-                            </div>
-                            <span class="status-indicator-badge badge-active" id="main-status-badge">
-                                <span class="pulse-dot"></span>
-                                <span id="main-status-text">Successful</span>
+        <!-- Main Content 2-Column Layout -->
+        <div class="dashboard-layout">
+            <!-- Left Column: Profile, Courses & Pending Assignments -->
+            <div class="dashboard-primary">
+                
+                <!-- Student Profile Card -->
+                <section class="card profile-card" id="profile">
+                    <div class="card-header">
+                        <div class="card-title-group">
+                            <span class="card-icon">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                             </span>
+                            <h2 class="card-title">Student Profile</h2>
                         </div>
-
-                        <div class="status-metrics-row">
-                            <div class="status-metric-box">
-                                <span class="box-label">Pipeline Result</span>
-                                <span class="box-value text-success" id="status-pipeline-val">Successful</span>
-                            </div>
-                            <div class="status-metric-box">
-                                <span class="box-label">HTTP Web Server</span>
-                                <span class="box-value text-success" id="status-http-val">Port 80 Active</span>
-                            </div>
-                            <div class="status-metric-box">
-                                <span class="box-label">SSH Inbound Rule</span>
-                                <span class="box-value text-warning" id="status-ssh-val">Admin IP Restricted</span>
-                            </div>
-                            <div class="status-metric-box">
-                                <span class="box-label">Target Architecture</span>
-                                <span class="box-value" id="status-vm-val">Ubuntu 22.04 LTS</span>
-                            </div>
-                        </div>
-
-                        <div class="status-actions">
-                            <button class="btn btn-primary" id="btn-run-healthcheck">
-                                <span class="btn-spinner" id="btn-spinner" style="display:none;"></span>
-                                <span id="btn-healthcheck-text">Re-check System Health</span>
-                            </button>
-                            <span class="last-checked-label" id="last-checked-label">Last checked: Just now</span>
-                        </div>
+                        <span class="badge badge-primary">Active Enrolled</span>
                     </div>
-
-                    <!-- Pipeline Stage Health Checklist -->
-                    <div class="stages-checklist-card">
-                        <h4 class="checklist-title">Pipeline Verification Checklist</h4>
-                        <div class="checklist-items">
-                            <div class="check-item passed">
-                                <span class="check-icon">✔</span>
-                                <div class="check-info">
-                                    <span class="check-name">Git Repository Check</span>
-                                    <span class="check-detail">Remote connected & commits tracked</span>
-                                </div>
-                                <span class="check-badge">SUCCESS</span>
+                    <div class="profile-body">
+                        <div class="profile-avatar-wrap">
+                            <div class="profile-avatar-large">AM</div>
+                            <span class="profile-status-indicator" title="Active Status"></span>
+                        </div>
+                        <div class="profile-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Full Name</span>
+                                <span class="info-value">Alex Morgan</span>
                             </div>
-                            <div class="check-item passed">
-                                <span class="check-icon">✔</span>
-                                <div class="check-info">
-                                    <span class="check-name">Static Syntax Validation</span>
-                                    <span class="check-detail">HTML5, CSS, and JS syntax passed</span>
-                                </div>
-                                <span class="check-badge">SUCCESS</span>
+                            <div class="info-item">
+                                <span class="info-label">Student ID</span>
+                                <span class="info-value font-mono">STU-2024-8941</span>
                             </div>
-                            <div class="check-item passed">
-                                <span class="check-icon">✔</span>
-                                <div class="check-info">
-                                    <span class="check-name">Terraform Configuration</span>
-                                    <span class="check-detail">Provider & variables validated</span>
-                                </div>
-                                <span class="check-badge">SUCCESS</span>
+                            <div class="info-item">
+                                <span class="info-label">Department</span>
+                                <span class="info-value">Computer Science & Engineering</span>
                             </div>
-                            <div class="check-item passed">
-                                <span class="check-icon">✔</span>
-                                <div class="check-info">
-                                    <span class="check-name">Jenkins Automation Engine</span>
-                                    <span class="check-detail">Container running on port 8080</span>
-                                </div>
-                                <span class="check-badge">SUCCESS</span>
+                            <div class="info-item">
+                                <span class="info-label">Year of Study</span>
+                                <span class="info-value">3rd Year (Semester 5)</span>
                             </div>
-                            <div class="check-item in-progress" id="check-item-deploy">
-                                <span class="check-icon">⏳</span>
-                                <div class="check-info">
-                                    <span class="check-name">Azure Deployment Probe</span>
-                                    <span class="check-detail">SSH key deployment & Nginx sync</span>
-                                </div>
-                                <span class="check-badge badge-pending">PENDING</span>
+                            <div class="info-item">
+                                <span class="info-label">Academic Advisor</span>
+                                <span class="info-value">Dr. Sarah Jenkins</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Student Email</span>
+                                <span class="info-value">alex.morgan@university.edu</span>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
+
+                <!-- My Courses Section -->
+                <section class="card courses-card" id="courses">
+                    <div class="card-header">
+                        <div class="card-title-group">
+                            <span class="card-icon">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                            </span>
+                            <h2 class="card-title">My Courses</h2>
+                        </div>
+                        <span class="card-badge-count">3 Registered Courses</span>
+                    </div>
+                    <div class="courses-list">
+                        <!-- Course 1 -->
+                        <div class="course-item">
+                            <div class="course-main-info">
+                                <div class="course-code-badge">CS 301</div>
+                                <div class="course-title-block">
+                                    <h3 class="course-name">Cloud Computing & DevOps</h3>
+                                    <p class="course-instructor">Instructor: Prof. Alan Turing &bull; 4 Credits</p>
+                                </div>
+                            </div>
+                            <div class="course-progress-block">
+                                <div class="progress-info-row">
+                                    <span class="progress-label">Syllabus Progress</span>
+                                    <span class="progress-percent">75%</span>
+                                </div>
+                                <div class="progress-bar-track">
+                                    <div class="progress-bar-fill fill-blue" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course 2 -->
+                        <div class="course-item">
+                            <div class="course-main-info">
+                                <div class="course-code-badge">CS 304</div>
+                                <div class="course-title-block">
+                                    <h3 class="course-name">Database Management Systems</h3>
+                                    <p class="course-instructor">Instructor: Prof. Grace Hopper &bull; 4 Credits</p>
+                                </div>
+                            </div>
+                            <div class="course-progress-block">
+                                <div class="progress-info-row">
+                                    <span class="progress-label">Syllabus Progress</span>
+                                    <span class="progress-percent">90%</span>
+                                </div>
+                                <div class="progress-bar-track">
+                                    <div class="progress-bar-fill fill-emerald" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course 3 -->
+                        <div class="course-item">
+                            <div class="course-main-info">
+                                <div class="course-code-badge">CS 308</div>
+                                <div class="course-title-block">
+                                    <h3 class="course-name">Web Technologies & UI Design</h3>
+                                    <p class="course-instructor">Instructor: Prof. Tim Berners-Lee &bull; 3 Credits</p>
+                                </div>
+                            </div>
+                            <div class="course-progress-block">
+                                <div class="progress-info-row">
+                                    <span class="progress-label">Syllabus Progress</span>
+                                    <span class="progress-percent">60%</span>
+                                </div>
+                                <div class="progress-bar-track">
+                                    <div class="progress-bar-fill fill-indigo" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Interactive Assignments Section -->
+                <section class="card assignments-card" id="assignments">
+                    <div class="card-header">
+                        <div class="card-title-group">
+                            <span class="card-icon">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                            </span>
+                            <h2 class="card-title">Pending Coursework</h2>
+                        </div>
+                        <span class="counter-badge" id="assignments-badge">3 Pending</span>
+                    </div>
+                    <p class="card-intro">Click &ldquo;Mark Completed&rdquo; below to update your progress in real-time.</p>
+                    
+                    <div class="assignments-list" id="assignments-list">
+                        <!-- Assignment 1 -->
+                        <div class="assignment-item" id="assignment-1" data-id="1">
+                            <div class="assignment-details">
+                                <span class="assignment-course">CS301 &bull; Cloud Computing</span>
+                                <h3 class="assignment-title">CI/CD Pipeline Setup & Dockerization Report</h3>
+                                <div class="assignment-meta">
+                                    <span class="assignment-due">Due: October 30, 2026</span>
+                                    <span class="status-tag status-pending">Pending Submission</span>
+                                </div>
+                            </div>
+                            <div class="assignment-action">
+                                <button class="btn btn-outline btn-mark-completed" data-id="1" aria-label="Mark CI/CD Assignment as Completed">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span>Mark Completed</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Assignment 2 -->
+                        <div class="assignment-item" id="assignment-2" data-id="2">
+                            <div class="assignment-details">
+                                <span class="assignment-course">CS304 &bull; DBMS</span>
+                                <h3 class="assignment-title">Relational Schema Normalization (3NF & BCNF)</h3>
+                                <div class="assignment-meta">
+                                    <span class="assignment-due">Due: November 03, 2026</span>
+                                    <span class="status-tag status-pending">Pending Submission</span>
+                                </div>
+                            </div>
+                            <div class="assignment-action">
+                                <button class="btn btn-outline btn-mark-completed" data-id="2" aria-label="Mark DBMS Assignment as Completed">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span>Mark Completed</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Assignment 3 -->
+                        <div class="assignment-item" id="assignment-3" data-id="3">
+                            <div class="assignment-details">
+                                <span class="assignment-course">CS308 &bull; Web Technologies</span>
+                                <h3 class="assignment-title">Responsive Student Portal Interface Mockup</h3>
+                                <div class="assignment-meta">
+                                    <span class="assignment-due">Due: November 07, 2026</span>
+                                    <span class="status-tag status-pending">Pending Submission</span>
+                                </div>
+                            </div>
+                            <div class="assignment-action">
+                                <button class="btn btn-outline btn-mark-completed" data-id="3" aria-label="Mark Web Technologies Assignment as Completed">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span>Mark Completed</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </section>
 
-        <!-- Project Architecture Section -->
-        <section class="section architecture-section" id="architecture">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-tag">System Architecture</span>
-                    <h2 class="section-title">Zero-Trust Cloud Infrastructure Topology</h2>
-                    <p class="section-description">
-                        Designed for security, resilience, and minimal operating costs on Microsoft Azure for Students subscription.
-                    </p>
-                </div>
-
-                <div class="architecture-diagram-wrapper">
-                    <div class="arch-layer-card">
-                        <div class="layer-header">
-                            <span class="layer-number">LAYER 1</span>
-                            <h4>Developer & CI/CD Control Plane (Local Host)</h4>
-                        </div>
-                        <div class="layer-content-grid">
-                            <div class="arch-box">
-                                <div class="arch-box-icon">💻</div>
-                                <h5>Developer Workstation</h5>
-                                <p>Windows 11 with PowerShell & Git</p>
-                            </div>
-                            <div class="arch-arrow">→</div>
-                            <div class="arch-box">
-                                <div class="arch-box-icon">🐙</div>
-                                <h5>GitHub Repository</h5>
-                                <p>francis1103/DevOps-IA3 (main branch)</p>
-                            </div>
-                            <div class="arch-arrow">→</div>
-                            <div class="arch-box">
-                                <div class="arch-box-icon">🐳</div>
-                                <h5>Dockerized Jenkins</h5>
-                                <p>devops-jenkins (Port 127.0.0.1:8080)</p>
-                            </div>
+            <!-- Right Column: Upcoming Schedule & Announcements -->
+            <aside class="dashboard-secondary">
+                
+                <!-- Upcoming Schedule -->
+                <section class="card schedule-card" id="schedule">
+                    <div class="card-header">
+                        <div class="card-title-group">
+                            <span class="card-icon">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            </span>
+                            <h2 class="card-title">Upcoming Schedule</h2>
                         </div>
                     </div>
-
-                    <div class="pipeline-connector vertical-connector"></div>
-
-                    <div class="arch-layer-card azure-cloud-layer">
-                        <div class="layer-header">
-                            <span class="layer-number">LAYER 2</span>
-                            <h4>Microsoft Azure Cloud (Central India / South India)</h4>
+                    <div class="schedule-timeline">
+                        <div class="schedule-item">
+                            <div class="schedule-date-badge">
+                                <span class="date-day">28</span>
+                                <span class="date-month">OCT</span>
+                            </div>
+                            <div class="schedule-content">
+                                <span class="schedule-type type-lecture">Lab Session</span>
+                                <h3 class="schedule-title">CS301 DevOps Practical Lab</h3>
+                                <p class="schedule-info">10:00 AM – 12:30 PM &bull; Computer Lab 402</p>
+                            </div>
                         </div>
-                        <div class="layer-content-grid">
-                            <div class="arch-box">
-                                <div class="arch-box-icon">🛡️</div>
-                                <h5>Network Security Group</h5>
-                                <p>devops-ia3-nsg (Port 80 Public / Port 22 Admin Only)</p>
+
+                        <div class="schedule-item exam-highlight">
+                            <div class="schedule-date-badge badge-exam">
+                                <span class="date-day">05</span>
+                                <span class="date-month">NOV</span>
                             </div>
-                            <div class="arch-arrow">→</div>
-                            <div class="arch-box">
-                                <div class="arch-box-icon">🌐</div>
-                                <h5>Public IP & NIC</h5>
-                                <p>devops-ia3-public-ip (20.219.161.235)</p>
+                            <div class="schedule-content">
+                                <span class="schedule-type type-exam">Major Exam</span>
+                                <h3 class="schedule-title">DBMS Mid-Term Theory Examination</h3>
+                                <p class="schedule-info">09:30 AM – 11:30 AM &bull; Examination Hall B</p>
                             </div>
-                            <div class="arch-arrow">→</div>
-                            <div class="arch-box">
-                                <div class="arch-box-icon">🐧</div>
-                                <h5>Ubuntu 22.04 LTS VM</h5>
-                                <p>devops-ia3-vm (Standard_B2als_v2)</p>
+                        </div>
+
+                        <div class="schedule-item">
+                            <div class="schedule-date-badge">
+                                <span class="date-day">12</span>
+                                <span class="date-month">NOV</span>
                             </div>
-                            <div class="arch-arrow">→</div>
-                            <div class="arch-box">
-                                <div class="arch-box-icon">⚡</div>
-                                <h5>Nginx Web Server</h5>
-                                <p>Document Root: /var/www/devops-ia3</p>
+                            <div class="schedule-content">
+                                <span class="schedule-type type-presentation">Project Review</span>
+                                <h3 class="schedule-title">Web Technologies Project Presentation</h3>
+                                <p class="schedule-info">02:00 PM – 04:00 PM &bull; Seminar Hall 1</p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <!-- Technology Stack Section -->
-        <section class="section stack-section" id="stack">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-tag">Tools & Technologies</span>
-                    <h2 class="section-title">Industry-Standard DevOps Toolchain</h2>
-                    <p class="section-description">
-                        Curated technologies selected for enterprise reliability, automated reproducibility, and academic excellence.
-                    </p>
-                </div>
+                <!-- Announcements Section with Toggle -->
+                <section class="card announcements-card" id="announcements">
+                    <div class="card-header">
+                        <div class="card-title-group">
+                            <span class="card-icon">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                            </span>
+                            <h2 class="card-title">Announcements</h2>
+                        </div>
+                        <button class="btn btn-sm btn-ghost" id="btn-toggle-announcements" aria-expanded="true">
+                            <span id="announcement-toggle-text">Hide</span>
+                            <svg id="announcement-toggle-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+                        </button>
+                    </div>
 
-                <div class="tech-grid">
-                    <div class="tech-card">
-                        <div class="tech-header">
-                            <div class="tech-icon-bg">🐙</div>
-                            <div>
-                                <h4 class="tech-name">Git & GitHub</h4>
-                                <span class="tech-role">Version Control</span>
+                    <div class="announcements-body" id="announcements-container">
+                        <!-- Announcement 1 -->
+                        <article class="announcement-card">
+                            <div class="announcement-badge badge-urgent">Academic Notice</div>
+                            <h3 class="announcement-title">Fall 2026 Mid-Term Examination Schedule Published</h3>
+                            <p class="announcement-summary">
+                                The comprehensive schedule for all Semester 5 examinations is now officially released. Please verify your seating arrangements and room allocations.
+                            </p>
+                            <div class="announcement-footer">
+                                <span class="announcement-author">Office of the Registrar</span>
+                                <span class="announcement-time">2 days ago</span>
                             </div>
-                        </div>
-                        <p class="tech-desc">Distributed version control managing source history, branch policies, and triggering Jenkins automation upon code push.</p>
-                    </div>
+                        </article>
 
-                    <div class="tech-card">
-                        <div class="tech-header">
-                            <div class="tech-icon-bg">🐳</div>
-                            <div>
-                                <h4 class="tech-name">Docker Engine</h4>
-                                <span class="tech-role">Containerization</span>
+                        <!-- Announcement 2 -->
+                        <article class="announcement-card">
+                            <div class="announcement-badge badge-event">Campus Event</div>
+                            <h3 class="announcement-title">Annual Innovation Hackathon Registration Open</h3>
+                            <p class="announcement-summary">
+                                Team registrations for the 48-hour Campus Hackathon are open until Nov 10. Win cash prizes and mentorship from top cloud engineering industry leaders.
+                            </p>
+                            <div class="announcement-footer">
+                                <span class="announcement-author">Student Tech Council</span>
+                                <span class="announcement-time">4 days ago</span>
                             </div>
-                        </div>
-                        <p class="tech-desc">Encapsulates Jenkins and its build dependencies in an isolated, portable container on Windows 11.</p>
-                    </div>
+                        </article>
 
-                    <div class="tech-card">
-                        <div class="tech-header">
-                            <div class="tech-icon-bg">👨‍✈️</div>
-                            <div>
-                                <h4 class="tech-name">Jenkins CI/CD</h4>
-                                <span class="tech-role">Pipeline Orchestration</span>
+                        <!-- Announcement 3 -->
+                        <article class="announcement-card">
+                            <div class="announcement-badge badge-general">Facility Update</div>
+                            <h3 class="announcement-title">Central Library 24/7 Extended Study Hours</h3>
+                            <p class="announcement-summary">
+                                To support students preparing for upcoming examinations, the central university library will remain open 24 hours daily starting November 1st.
+                            </p>
+                            <div class="announcement-footer">
+                                <span class="announcement-author">University Library Services</span>
+                                <span class="announcement-time">1 week ago</span>
                             </div>
-                        </div>
-                        <p class="tech-desc">Automates build checkout, static code analysis, Terraform validation, and automated SSH-based deployment.</p>
+                        </article>
                     </div>
-
-                    <div class="tech-card">
-                        <div class="tech-header">
-                            <div class="tech-icon-bg">🌍</div>
-                            <div>
-                                <h4 class="tech-name">HashiCorp Terraform</h4>
-                                <span class="tech-role">Infrastructure as Code</span>
-                            </div>
-                        </div>
-                        <p class="tech-desc">Declarative infrastructure management provisioning Azure VNet, subnets, network security groups, and Linux VMs.</p>
-                    </div>
-
-                    <div class="tech-card">
-                        <div class="tech-header">
-                            <div class="tech-icon-bg">☁️</div>
-                            <div>
-                                <h4 class="tech-name">Microsoft Azure</h4>
-                                <span class="tech-role">Cloud Hosting</span>
-                            </div>
-                        </div>
-                        <p class="tech-desc">Provides enterprise-grade cloud compute, static public IP routing, and granular Network Security Groups.</p>
-                    </div>
-
-                    <div class="tech-card">
-                        <div class="tech-header">
-                            <div class="tech-icon-bg">🌐</div>
-                            <div>
-                                <h4 class="tech-name">Nginx Web Server</h4>
-                                <span class="tech-role">HTTP Reverse Proxy</span>
-                            </div>
-                        </div>
-                        <p class="tech-desc">High-performance HTTP server running on Ubuntu 22.04 LTS serving static assets with gzip compression.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Project Workflow Section -->
-        <section class="section workflow-section" id="workflow">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-tag">Step-by-Step</span>
-                    <h2 class="section-title">End-to-End Operational Workflow</h2>
-                    <p class="section-description">
-                        How continuous integration and continuous deployment ensure rapid, safe, and verifiable delivery.
-                    </p>
-                </div>
-
-                <div class="workflow-steps-list">
-                    <div class="workflow-step-card">
-                        <div class="step-num">01</div>
-                        <div class="workflow-step-content">
-                            <h4>Code & Commit</h4>
-                            <p>Developer modifies the frontend application or deployment scripts on Windows 11. Changes are tested locally and committed to the Git repository.</p>
-                        </div>
-                    </div>
-
-                    <div class="workflow-step-card">
-                        <div class="step-num">02</div>
-                        <div class="workflow-step-content">
-                            <h4>Push to GitHub</h4>
-                            <p>Code is pushed to GitHub (<span class="mono">francis1103/DevOps-IA3</span>). The repository maintains code integrity and acts as the single source of truth.</p>
-                        </div>
-                    </div>
-
-                    <div class="workflow-step-card">
-                        <div class="step-num">03</div>
-                        <div class="workflow-step-content">
-                            <h4>Jenkins Triggers Pipeline</h4>
-                            <p>Jenkins detects the new commit via SCM polling or webhook, creates an isolated workspace, and checks out the exact commit SHA.</p>
-                        </div>
-                    </div>
-
-                    <div class="workflow-step-card">
-                        <div class="step-num">04</div>
-                        <div class="workflow-step-content">
-                            <h4>Validation & Security Scan</h4>
-                            <p>Jenkins validates HTML/CSS/JS syntax, verifies script execution permissions, checks Terraform configuration, and enforces zero-secret exposure policies.</p>
-                        </div>
-                    </div>
-
-                    <div class="workflow-step-card">
-                        <div class="step-num">05</div>
-                        <div class="workflow-step-content">
-                            <h4>SSH Package Transfer & Deploy</h4>
-                            <p>Using credentials stored in Jenkins' secure vault, Jenkins establishes an authenticated SSH session to the Azure VM (<span class="mono">20.219.161.235</span>) and synchronizes release files to <span class="mono">/var/www/devops-ia3</span>.</p>
-                        </div>
-                    </div>
-
-                    <div class="workflow-step-card">
-                        <div class="step-num">06</div>
-                        <div class="workflow-step-content">
-                            <h4>Service Reload & Health Verification</h4>
-                            <p>The deployment script reloads Nginx and performs an HTTP GET probe on port 80. If any step fails, the pipeline aborts immediately with diagnostic logs.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                </section>
+            </aside>
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <span class="logo-icon">⚡</span>
-                <span class="logo-text">DevOps IA-3 Deployment Dashboard</span>
-                <p class="footer-sub">Automated CI/CD Pipeline with Terraform, Azure, GitHub, Docker, and Jenkins</p>
+    <!-- Portal Footer -->
+    <footer class="portal-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-brand">
+                    <span class="footer-logo">EduPulse</span>
+                    <span class="footer-copyright">&copy; 2026 University College of Engineering. All rights reserved.</span>
+                </div>
+                <p class="footer-tagline">Empowering student success through modern digital campus tools.</p>
             </div>
-            <div class="footer-meta">
-                <p>Academic Project — DevOps IA-3 | Developer: Francis</p>
-                <p>Azure Region: <span class="mono">centralindia</span> | VM: <span class="mono">Ubuntu 22.04 LTS (devops-ia3-vm)</span></p>
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="#dashboard" class="footer-link">Dashboard</a>
+                    <a href="#courses" class="footer-link">Courses</a>
+                    <a href="#assignments" class="footer-link">Assignments</a>
+                    <a href="#schedule" class="footer-link">Schedule</a>
+                </div>
+                <div class="system-status">
+                    <span class="status-indicator-dot"></span>
+                    <span>System Status: All Services Operational</span>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Interactive JavaScript -->
-    <script src="js/script.js"></script>
+    <!-- Interactive Toast Notification Container -->
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+    <!-- Vanilla JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
