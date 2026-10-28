@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        AZURE_VM_HOST        = '20.219.161.235'
+        AZURE_VM_HOST        = '10.0.1.4'
         AZURE_VM_USER        = 'azureuser'
         TARGET_DEPLOY_DIR    = '/var/www/student-portal'
         TARGET_SSH_PORT      = '22'
@@ -121,3 +121,4 @@ pipeline {
         }
     }
 }
+

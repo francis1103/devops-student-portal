@@ -6,7 +6,7 @@
 set -euo pipefail
 
 # Configuration with safe defaults
-TARGET_HOST="${AZURE_VM_HOST:-20.219.161.235}"
+TARGET_HOST="${AZURE_VM_HOST:-10.0.1.4}"
 TARGET_USER="${AZURE_VM_USER:-azureuser}"
 DEPLOY_DIR="${TARGET_DEPLOY_DIR:-/var/www/student-portal}"
 SSH_PORT="${TARGET_SSH_PORT:-22}"
@@ -130,3 +130,4 @@ echo "=========================================================="
 echo "✔ Deployment completed successfully!"
 echo " Public Application URL: http://$TARGET_HOST"
 echo "=========================================================="
+
